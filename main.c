@@ -1,5 +1,3 @@
-#define _POSIX_C_SOURCE 200809L
-
 #include "monty.h"
 data_t data = {NULL, NULL, NULL, 0};
 /**
