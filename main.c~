@@ -1,0 +1,75 @@
+#define _POSIX_C_SOURCE 200809L
+
+#include "monty.h"
+data_t data = {NULL, NULL, NULL, 0};
+
+/**
+ * main - Entry point for the Monty interpreter.
+ * @argc: Number of command-line arguments.
+ * @argv: Array of command-line arguments.
+ * Return: EXIT_SUCCESS on success, EXIT_FAILURE on failure.
+ */
+int main(int argc, char *argv[])
+{
+	char *line;
+	FILE *file;
+	size_t len = 0;
+	ssize_t read;
+	stack_t *stack = NULL;
+	unsigned int value = 0;
+	char *opcode;
+	char *op_arg;
+
+	if (argc != 2)
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+		return (EXIT_FAILURE);
+	}
+
+	file = fopen(argv[1], "r");
+	if (file == NULL)
+	{
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		return (EXIT_FAILURE);
+	}
+
+	while ((read = getline(&line, &len, file)) != -1)
+	{
+		value++;
+
+		if (line[read - 1] == '\n')
+		line[read - 1] = '\0';
+
+		opcode = strtok(line, " \t\n");
+		op_arg = strtok(NULL, " \t\n");
+
+		if (!opcode)
+			continue;
+
+		if (strcmp(opcode, "push") == 0)
+		{
+			if (!op_arg || !isdigit(*op_arg))
+			{
+				fprintf(stderr, "L%u: usage: push integer\n", value);
+				exit(EXIT_FAILURE);
+			}
+			fpush(&stack, atoi(op_arg));
+		}
+		else if (strcmp(opcode, "pall") == 0)
+		{
+			fpall(&stack, value);
+		}
+		else
+		{
+			fprintf(stderr, "L%u: unknown instruction %s\n", value, opcode);
+			fclose(file);
+			free(line);
+			exit(EXIT_FAILURE);
+		}
+	}
+
+	free_stack(stack);
+	fclose(file);
+	free(line);
+	return (0);
+}
