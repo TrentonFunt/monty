@@ -13,7 +13,8 @@ data_t data;
 int execute(char *content, stack_t **stack, unsigned int counter, FILE *file)
 {
 	instruction_t opst[] = {
-		{"push", fpush}, {"pall", fpall}, {"pint", fpint}, {"pop", fpop}, {"swap", fswap}, {"add", fadd}, {"nop", fnop}, {NULL, NULL}
+		{"push", fpush}, {"pall", fpall}, {"pint", fpint}, {"pop", fpop},
+		{"swap", fswap}, {"add", fadd}, {"nop", fnop}, {NULL, NULL}
 	};
 	unsigned int i = 0;
 	char *op_arg;

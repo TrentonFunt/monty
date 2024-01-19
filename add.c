@@ -4,7 +4,7 @@
  * It checks if the stack contains at least two elements; if not,
  * it prints an error message to stderr and terminates the program.
  * @stack_head: Double pointer to the head of the stack.
- * @stack_value: Line number corresponding to the instruction in the Monty file.
+ * @stack_value: Line number with instruction in the Monty file.
 */
 void fadd(stack_t **stack_head, unsigned int stack_value)
 {
