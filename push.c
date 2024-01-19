@@ -18,7 +18,7 @@ void free_stack(stack_t *stack_head)
 }
 
 /**
- * f_push - add node to the stack
+ * fpush - add node to the stack
  * @stack_head: Double pointer to the head of the stack
  * @stack_value: line_number
  */
