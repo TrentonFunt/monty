@@ -1,6 +1,6 @@
 #include "monty.h"
 
-data_t data = {NULL, NULL, NULL, 0};
+data_t data;
 
 /**
  * execute - Executes the opcode from the Monty file.
