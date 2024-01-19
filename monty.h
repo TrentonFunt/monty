@@ -57,5 +57,6 @@ void add_node(stack_t **stack_head, int num);
 void free_stack(stack_t *stack_head);
 void fpush(stack_t **stack_head, unsigned int stack_value);
 void fpall(stack_t **stack_head, unsigned int stack_value);
+void fpint(stack_t **stack_head, unsigned int stack_value);
 
 #endif /* MONTY_H */
