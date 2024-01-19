@@ -61,5 +61,5 @@ void fpint(stack_t **stack_head, unsigned int stack_value);
 void fpop(stack_t **stack_head, unsigned int stack_value);
 void fswap(stack_t **stack_head, unsigned int stack_value);
 void fnop(stack_t **stack_head, unsigned int stack_value);
-
+void fadd(stack_t **stack_head, unsigned int value);
 #endif /* MONTY_H */

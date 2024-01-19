@@ -1,0 +1,33 @@
+#include "monty.h"
+/**
+ * fadd - function adds the values of the top two elements of the stack
+ * It checks if the stack contains at least two elements; if not,
+ * it prints an error message to stderr and terminates the program.
+ * @stack_head: Double pointer to the head of the stack.
+ * @stack_value: Line number corresponding to the instruction in the Monty file.
+*/
+void fadd(stack_t **stack_head, unsigned int value)
+{
+	stack_t *sh;
+	int i = 0, hs;
+
+	sh = *stack_head;
+	while (sh)
+	{
+		sh = sh->next;
+		i++;
+	}
+	if (i < 2)
+	{
+		fprintf(stderr, "L%d: can't add, stack too short\n", stack_head);
+		fclose(data.file_pointer);
+		free(data.line_content);
+		free_stack(*stack_head);
+		exit(EXIT_FAILURE);
+	}
+	sh = *stack_head;
+	hs = sh->n + sh->next->n;
+	sh->next->n = hs;
+	*stack_head = sh->next;
+	free(sh);
+}
